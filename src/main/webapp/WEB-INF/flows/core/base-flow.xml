@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      start-state="initFlow" abstract="true">
+
+
+    <input name="startStateName" value="flowScope.startStateName"/>
+    <input name="pageMode" value="flowScope.pageMode"/>
+    <input name="formObjectValue" value="flowScope.formObjectValue"/>
+
+
+    <action-state id="initFlow">
+        <evaluate expression="formAction.initFlow"/>
+        <transition to="selectStartState"/>
+    </action-state>
+
+    <decision-state id="selectStartState">
+        <if test="flowScope.lastStateName!=null" then="#{flowScope.lastStateName}"/>
+        <if test="flowScope.startStateName==null" then="initListView" else="#{flowScope.startStateName}"/>
+    </decision-state>
+
+    <action-state id="initListView">
+        <evaluate expression="formAction.initListView"/>
+        <transition on="error" to="entityListView"/>
+        <transition on="success" to="listAction"/>
+    </action-state>
+
+    <action-state id="listAction">
+        <evaluate expression="formAction.listAction"/>
+        <transition to="entityListView"/>
+    </action-state>
+
+    <view-state id="entityListView" view="#{flowScope.entityListView}" >
+        <on-entry>
+            <evaluate expression="formAction.onListViewEntry"/>
+        </on-entry>
+
+        <transition on="add" to="onAddAction" bind="false" validate="false"/>
+        <transition on="edit" to="onEditAction" validate="false"/>
+        <transition on="search" to="listAction" bind="true" />
+        <transition on="delete" to="deleteAction"/>
+        <transition on="loadPage" to="listAction">
+            <set name="flowScope.currentPage" value="requestParameters.currentPage" type="integer"/>
+        </transition>
+        <transition on="back" to="finish"/>
+        <on-exit>
+            <evaluate expression="formAction.onListViewExit"/>
+        </on-exit>
+    </view-state>
+
+    <action-state id="onAddAction">
+        <evaluate expression="formAction.onAdd"/>
+         <transition on="success" to="initSingleView">
+             <set name="flowScope.lastStateName" value="'listAction'"/>
+             <set name="flowScope.pageMode" value="'update'"/>
+         </transition>
+        <transition on="error" to="entityListView"/>
+    </action-state>
+
+    <action-state id="onEditAction">
+        <evaluate expression="formAction.onEdit"/>
+         <transition on="success" to="initSingleView">
+             <set name="flowScope.lastStateName" value="'listAction'"/>
+             <set name="flowScope.pageMode" value="'update'"/>
+         </transition>
+        <transition on="error" to="entityListView"/>
+    </action-state>
+
+    <action-state id="deleteAction">
+        <evaluate expression="formAction.deleteEntity"/>
+        <transition on="success" to="listAction"/>
+        <transition on="error" to="entityListView"/>
+    </action-state>
+
+    <action-state id="initSingleView">
+        <evaluate expression="formAction.setupForm"/>
+        <transition to="entitySingleView"/>
+    </action-state>
+
+    <view-state id="entitySingleView" view="#{flowScope.entitySingleView}">
+        <transition on="save" to="saveEntity">
+        </transition>
+        <transition on="back" to="selectNextStateAfterSingleView" bind="false"/>
+    </view-state>
+
+    <action-state id="saveEntity">
+        <evaluate expression="formAction.saveEntity"/>
+        <transition on="error" to="entitySingleView"/>
+        <transition on="success" to="selectNextStateAfterSingleView">
+        </transition>
+    </action-state>
+
+    <decision-state id="selectNextStateAfterSingleView">
+        <if test="flowScope.lastStateName==null" then="finish" else="#{flowScope.lastStateName}"/>
+    </decision-state>
+
+    <action-state id="initiateSubFlow">
+        <evaluate expression="formAction.initiateSubFlow"/>
+        <transition on="success" to="subFlow"/>
+        <transition on="error" to="#{flowScope.lastStateName}"/>
+    </action-state>
+
+    <subflow-state id="subFlow" subflow="#{flowScope.subFlowName}">
+        <input name="startStateName" value="flowScope.subFlowStartStateName"/>
+        <input name="pageMode" value="flowScope.subFlowPageMode"/>
+        <transition on="finish" to="selectStartState"/>
+    </subflow-state>
+
+    <view-state id="errorView" view="errorView"/>
+    <view-state id="printView" view="#{flowScope.printViewName}"/>
+
+    <end-state id="finish"/>
+
+
+    <global-transitions>
+        <transition on-exception="java.lang.NullPointerException" to="errorView"/>
+        <transition on-exception="java.lang.Exception" to="errorView"/>
+
+    </global-transitions>
+
+    <exception-handler bean="flowExceptionHandler"/>
+
+</flow>

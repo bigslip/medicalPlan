@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      parent="base-flow">
+
+    <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
+
+
+    <on-start>
+        <set name="flowScope.formAction" value="registerDoctorAction"/>
+    </on-start>
+
+    <view-state id="entityListView" view="registerDoctorView" parent="base-flow#entityListView">
+
+    </view-state>
+
+    <view-state id="entitySingleView" view="registerDoctorSingleView" parent="base-flow#entitySingleView" model="doctor">
+        <transition on="save" to="saveEntity" bind="true" validate="false">
+
+        </transition>
+
+    </view-state>
+
+</flow>

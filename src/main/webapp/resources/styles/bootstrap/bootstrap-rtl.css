@@ -1,0 +1,20 @@
+.pull-left{
+          float: left;
+}
+.sidebarRTL {
+    float: right;
+    padding-right: 0;
+    width: 250px;
+}
+.bs-docs-sidenav > li > a {
+    text-align: right;
+}
+.nav-list > .active > a,
+.nav-list > .active > a:hover,
+.nav-list > .active > a:focus {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    background-color: #0088cc;
+    text-align: right;
+
+}

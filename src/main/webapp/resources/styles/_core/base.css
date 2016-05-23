@@ -1,0 +1,217 @@
+body {
+    direction: rtl;
+}
+
+.form-horizontal {
+    background: #ffffff;
+    min-height: 500px;
+    margin: 20px;
+    padding: 50px 100px 30px 20px;
+}
+
+.alert {
+    /*    width: 60%;*/
+    margin-bottom: 5px;
+    padding: 5px 35px 5px 14px
+}
+
+table.base-holder {
+    background-color: rgb(243, 244, 245);
+    border: 1px solid #CCCCCC;
+    margin: 5px;
+    padding: 5px;
+    outline-width: thick;
+    width: 98%;
+}
+
+table.expose {
+    border: 1px outset #ccc;
+    background: #fff url(../../images/admin/h300.png) repeat-x;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center; /*width:350px;*/
+    width: 98%;
+    height: 60px;
+    -moz-border-radius: 4px;
+}
+
+.pagination-left {
+    text-align: left;
+    padding: 10px 20px 0 20px;
+}
+
+.select-data {
+    width: 175px;
+    text-align: right;
+    margin: 2px;
+    height: 300px;
+}
+
+.base-label {
+    display: inline;
+    padding-left: 3px;
+    /*font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-size: medium;
+    font-weight: normal;
+    float: left;
+    vertical-align: middle;
+    text-align: left;
+    float: left;
+}
+
+.base-button {
+    width: 100px;
+}
+
+.editCell {
+    background: url("../../images/admin/edit.png") center no-repeat;
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.deleteCell {
+    background: url("../../images/admin/delete_2.png") center no-repeat;
+    width: 16px;
+    height: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-btn {
+    background: url("../../images/admin/magnifier32.png") center no-repeat;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    margin: 0 20px 10px 0;
+}
+
+#delete-button {
+    background: url("../../images/admin/delete_2.png") left no-repeat;
+    width: 90px;
+    display: inline;
+    text-align: right;
+
+}
+
+#entityList {
+    width: 100%;
+    border: medium #006600;
+}
+
+.table-heading {
+    background-color: #daa520;
+    height: 25px;
+    text-align: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.table tbody,
+.table thead {
+    cursor: pointer;
+}
+
+.table-striped tbody > tr:nth-child(even) > td,
+.table-striped tbody > tr:nth-child(even) > th {
+    background-color: rgb(243, 244, 245);
+}
+
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+    background-color: #ffffff;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table thead {
+    text-align: center;
+    background-color: #e0e0e0; /*rgb(243, 244, 245)*/
+    /*#e0e0e0--#e0e0e0 -- rgb(249, 249, 249) ;*/
+}
+
+.table thead th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.base-select:selection {
+    background-color: #acdd4a;
+}
+.base-inputtext, .base-inputdate, .base-select{
+    width: 175px;
+    height: 25px;
+}
+.base-inputtext, .base-inputdate, .base-select, .base-textarea {
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.base-inputdate {
+    text-align: left;
+    direction: ltr;
+}
+
+.base-textarea {
+    width: 300px;
+    height: 60px;
+    display: inline;
+    vertical-align: baseline;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    border: 1px solid #333;
+    background-color: #161616;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-family: arial, sans-serif;
+}
+
+#page-info {
+    float: left;
+    line-height: 16px;
+    padding: 3px 12px 0;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.table {
+    border: 1px solid rgb(203, 203, 203);
+    width: 98%;
+    margin: 5px;
+}
+
+.pagination {
+    margin: 5px 0;
+    padding: 5px 15px 0 20px;
+}
+
+.table th {
+    padding: 8px;
+}
+
+.table td {
+    padding: 3px;
+}
+
+td.emptyList {
+    text-align: right;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover {
+    /*#E0E0E0 rgb(224, 224, 224)*/
+    background-color: #E0E0E0;
+}

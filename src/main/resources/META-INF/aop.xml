@@ -1,0 +1,8 @@
+<aspectj>
+    <aspects>
+        <!--<aspect name=""/>-->
+    </aspects>
+    <weaver options="-showWeaveInfo -XmessageHandlerClass:org.springframework.aop.aspectj.AspectJWeaverMessageHandler">
+        <include within="ir.parsdeveloper..*"/>
+    </weaver>
+</aspectj>

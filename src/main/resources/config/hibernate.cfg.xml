@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+        <property name="hibernate.connection.characterEncoding">UTF-8</property>
+        <property name="hibernate.connection.charSet">UTF-8</property>
+        <property name="hibernate.max_fetch_depth">2</property>
+        <property name="hibernate.default_batch_fetch_size">16</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.connection.autocommit">false</property>
+        <property name="hibernate.transaction.flush_before_completion">false</property>
+
+        <property name="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</property>
+        <property name="hibernate.query.substitutions">true=1, false=0</property>
+
+        <property name="hibernate.jdbc.batch_size">10</property>
+        <property name="hibernate.jdbc.fetch_size">10</property>
+        <!--
+          <listener type="post-insert" class="ir.parsdeveloper.commons.listener.PersistEntityListener"/>
+          <listener type="pre-insert" class="ir.parsdeveloper.commons.listener.PersistEntityListener"/>
+        -->
+
+    </session-factory>
+
+</hibernate-configuration>
+

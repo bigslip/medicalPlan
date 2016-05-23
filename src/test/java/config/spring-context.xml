@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="ir.parsdeveloper" annotation-config="true"  scoped-proxy="targetClass" use-default-filters="true" />
+    <!--<context:spring-configured />-->
+    <mvc:annotation-driven  />
+    <context:annotation-config/>
+
+
+    <context:property-placeholder file-encoding="UTF-8"  location="classpath*:config/*.properties" system-properties-mode="ENVIRONMENT" />
+
+    <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="useCodeAsDefaultMessage" value="true"/>
+        <property name="basenames">
+            <list>
+                <value>bundle.messages</value>
+                <value>bundle.errors</value>
+            </list>
+        </property>
+    </bean>
+ <!--   <import resource="services.xml"/>
+    <import resource="database.xml"/>
+    &lt;!&ndash;<import resource="webmvc.xml"/>
+    <import resource="webflow.xml"/>&ndash;&gt;
+    &lt;!&ndash;<import resource="security.xml"/>&ndash;&gt;
+    <import resource="webservice.xml"/>-->
+    <!--<import resource="classpath:ir.parsdevelopereloper.config.PersistenceContextConfig"/>-->
+
+
+</beans>

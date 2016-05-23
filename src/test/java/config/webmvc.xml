@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <mvc:view-controller path="/login" view-name="login"/>
+
+    <bean name="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions" value="/views/tiles/**/*-tiles.xml"/>
+    </bean>
+    <bean name="tilesViewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+        <property name="viewClass" value="org.springframework.webflow.mvc.view.FlowAjaxTiles3View"/>
+        <property name="order" value="1"/>
+    </bean>
+    <bean name="beanViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="2"/>
+    </bean>
+
+    <bean name="mvcViewFactoryCreator" class="ir.parsdeveloper.commons.builder.CustomMvcViewFactoryCreator">
+        <property name="useSpringBeanBinding" value="false"/>
+        <property name="viewResolvers">
+            <list>
+                <ref bean="tilesViewResolver"/>
+                <ref bean="beanViewResolver"/>
+            </list>
+        </property>
+
+    </bean>
+</beans>

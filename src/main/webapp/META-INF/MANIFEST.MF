@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Implementation-Title: core
+Implementation-Version: 1.0.1
+Build-Number: 1.0.1.r2016-05-16 04:11
+Built-By: h.tayebi
+Specification-Vendor: parsdeveloper
+Specification-Title: core
+Implementation-Vendor-Id: ir.parsdeveloper
+Implementation-Vendor: parsdeveloper
+Build-Jdk: 1.8.0_45
+Specification-Version: 1.0.1
+Created-By: hadi tayebi
+Built-Time: 2016-05-16 04:11
+

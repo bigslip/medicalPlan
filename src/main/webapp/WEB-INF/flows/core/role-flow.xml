@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      parent="base-flow" >
+
+    <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
+
+
+    <on-start>
+        <set name="flowScope.formAction" value="roleFormAction"/>
+    </on-start>
+
+
+    <view-state id="entityListView" parent="base-flow#entityListView">
+
+        <transition on="test" to="entityListView">
+            <evaluate expression="formAction.testAction"/>
+        </transition>
+        <transition on="changetheme" to="entityListView">
+
+        </transition>
+        <transition on="changelocale" to="entityListView">
+
+        </transition>
+
+    </view-state>
+
+    <view-state id="entitySingleView" parent="base-flow#entitySingleView" model="role">
+
+        <transition on="testAjax" validate="false">
+            <set name="requestScope.hello" value="'hi namazi'"/>
+            <render fragments="content"/>
+        </transition>
+
+    </view-state>
+
+    <view-state id="personSingleView" view="personView" parent="base-flow#entitySingleView" model="person">
+
+    </view-state>
+
+
+</flow>

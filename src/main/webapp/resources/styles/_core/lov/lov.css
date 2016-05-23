@@ -1,0 +1,56 @@
+/*td.entityCode {
+    width: 60px;
+}
+td.entityName {
+    width: 200px;
+}*/
+#paging-table {
+    float: left;
+    position: relative;
+    margin: 0 0 0 10px;
+}
+.page-right, .page-far-right,
+.page-left, .page-far-left {
+    display: block;
+    float: left;
+    height: 24px;
+    width: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.page-far-left {
+    background: url("pagination-img/paging_far_left.gif") no-repeat scroll 0 0 transparent;
+    margin: 5px 0 0 3px;
+}
+
+.page-left {
+    background: url("pagination-img/paging_left.gif") no-repeat scroll 0 0 transparent;
+    margin: 5px 0 0 3px;
+}
+
+.page-far-right {
+    background: url("pagination-img/paging_far_right.gif") no-repeat scroll 0 0 transparent;
+    margin: 5px 3px 0 0;
+}
+
+.page-right {
+    background: url("pagination-img/paging_right.gif") no-repeat scroll 0 0 transparent;
+    margin: 5px 3px 0 0;
+}
+
+#page-info {
+    float: left;
+    line-height: 16px;
+    padding: 3px 12px 0;
+    margin-top: 5px;
+    text-align: right;
+}
+.search-btn {
+    background: url("magnifier32.png") center no-repeat;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    margin:0 10px 10px 0;
+}

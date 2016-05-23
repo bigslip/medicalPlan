@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:security="http://www.springframework.org/schema/security"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+
+    <security:http auto-config="false">
+        <security:intercept-url pattern="/views/secured/**" access="IS_AUTHENTICATED_FULLY"/>
+        <security:intercept-url pattern="/*-flow" access="IS_AUTHENTICATED_FULLY"/>
+        <security:intercept-url pattern="/views/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/j_spring_security_check"/>
+        <security:form-login  login-page="/login" authentication-success-handler-ref="sessionListener"
+                             authentication-failure-url="/login?bad_credentials"/>
+        <security:logout logout-url="/logout" success-handler-ref="sessionListener"/>
+        <security:session-management session-fixation-protection="migrateSession" />
+        <security:remember-me token-validity-seconds="3600" use-secure-cookie="false" remember-me-parameter="j_spring_security_remember_me" />
+        <!--                             session-authentication-strategy-ref="sessionAuthenticationStrategy"-->
+
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="authenticationProvider"/>
+    </security:authentication-manager>
+
+    <bean name="authenticationProvider"
+          class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+        <property name="userDetailsService" ref="userDetailsServiceImpl"/>
+    </bean>
+    <security:global-method-security jsr250-annotations="enabled" secured-annotations="enabled" />
+
+    <!--<bean name="sessionAuthenticationStrategy" class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy">
+
+        <constructor-arg ref=""/>
+    </bean>-->
+</beans>

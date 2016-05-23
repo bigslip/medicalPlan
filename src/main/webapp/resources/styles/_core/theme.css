@@ -1,0 +1,23 @@
+.infoClass {
+    color: blue;
+    font-weight: lighter;
+}
+
+.errorClass {
+    color: tomato;
+    font-weight: bold;
+
+}
+
+.warmClass {
+    color: wheat;
+    font-weight: lighter;
+
+}
+
+.fatalClass {
+    color: tomato;
+    font-weight: bolder;
+    background-color: yellow;
+
+}

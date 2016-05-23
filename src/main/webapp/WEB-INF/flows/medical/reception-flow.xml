@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      parent="base-flow" start-state="receptionSingleView">
+
+    <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
+
+
+    <on-start>
+        <set name="flowScope.formAction" value="receptionAction"/>
+    </on-start>
+
+    <view-state id="receptionSingleView" view="receptionView" parent="base-flow#entitySingleView" model="patient">
+        <on-entry>
+            <evaluate expression="formAction.setupForm"/>
+        </on-entry>
+        <transition on="next" bind="true" validate="false" to="nextAction"/>
+    </view-state>
+
+    <action-state id="nextAction">
+        <evaluate expression="formAction.nextAction"/>
+        <transition on="success" to="planTemplateFlow"/>
+    </action-state>
+
+    <subflow-state id="planTemplateFlow" subflow="plan-template-flow">
+        <input name="patient" value="flowScope.patient"/>
+    </subflow-state>
+
+
+</flow>
