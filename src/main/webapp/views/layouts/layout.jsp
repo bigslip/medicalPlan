@@ -10,7 +10,7 @@
 
 <html class="no-js">
 <div id="art-main">
-    <head lang="fa">
+    <head lang="en">
         <tiles:insertAttribute name="header"/>
     </head>
     <body>

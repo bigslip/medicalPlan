@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class PlanTemplate extends AuditModel<Long> {
     private String description;
     private Doctor doctor;
-    private Period period;
-    private Long doctorId;
+
+
 
 
     public PlanTemplate() {
@@ -43,24 +43,8 @@ public class PlanTemplate extends AuditModel<Long> {
         this.doctor = doctor;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "PERIOD_ID")
-    public Period getPeriod() {
-        return period;
-    }
 
-    public void setPeriod(Period period) {
-        this.period = period;
-    }
 
-    @Transient
-    public Long getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(Long doctorId) {
-        this.doctorId = doctorId;
-    }
 
 
 }

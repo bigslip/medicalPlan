@@ -207,20 +207,27 @@ public abstract class AbstractFormAction<T extends BaseModel> extends FormAction
         return Integer.parseInt(selectedIdStr) - 1;
     }
 
-    protected String[] getSelectedRowsId(RequestContext context) {
-        return getRequestParameters(context).getArray(FormAction.SelectedRow);
+    protected String[] getSelectedRowsId(RequestContext context) throws ActionException {
+        String selectedIdStr = getRequestParameters(context).get(getFormObjectName() + Constants.SELECTED_ROWS);
+        if (!StringUtils.hasText(selectedIdStr)) {
+            throw new ActionException("errors.unknown_error");
+        }
+        String[] rows = selectedIdStr.split(";");
+        return rows;
+        // return getRequestParameters(context).getArray(FormAction.SelectedRow);
     }
 
-    protected List<BaseModel> getSelectedRowsAsEntityList(RequestContext context) {
+    protected List<BaseModel> getSelectedRowsAsEntityList(RequestContext context) throws ActionException {
         String selectedRow[] = getSelectedRowsId(context);
         if (selectedRow == null || selectedRow.length == 0) return null;
 
-        Map<Integer, T> entityMap = new HashMap<>(5);
+//        Map<Integer, T> entityMap = new HashMap<>(5);
+        List<T> entityList = getEntityList(context);
         List<BaseModel> list = new ArrayList<BaseModel>();
         for (String rowId : selectedRow) {
             try {
                 Integer id = Integer.parseInt(rowId);
-                list.add(entityMap.get(id));
+                list.add(entityList.get(id - 1));
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }

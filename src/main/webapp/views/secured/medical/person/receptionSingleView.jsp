@@ -17,6 +17,7 @@
 <div class="form" dir="rtl" style="direction: rtl;">
     <p:form modelAttribute="patient">
         <%@include file="/views/secured/medical/commons/personSingleView.jsp" %>
-        <p:button event="next" valueKey="next" cssClass="art-button"/>
+        <p:button event="save" valueKey="save" cssClass="art-button"/>
+        <p:button event="plan" valueKey="plan" cssClass="art-button"/>
     </p:form>
 </div>

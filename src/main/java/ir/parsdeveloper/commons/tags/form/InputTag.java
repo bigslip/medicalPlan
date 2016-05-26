@@ -16,7 +16,7 @@ import java.io.IOException;
 public class InputTag extends org.springframework.web.servlet.tags.form.InputTag {
 
     public final static String DEFAULT_INPUT_CSS_CLASS = " form-control ";
-    public final static String DEFAULT_LANG_ATTRIBUTE = "fa";
+    public final static String DEFAULT_LANG_ATTRIBUTE = "en";
     public final static String DATA_NUMBER_ATTRIBUTE = "data-number";
 
     private static DateTimeEditor dateTimeEditor = new DateTimeEditor();
@@ -161,7 +161,7 @@ public class InputTag extends org.springframework.web.servlet.tags.form.InputTag
     }
 
 
-    protected PropertyEditor getPropertyEditor() throws JspException {
-        return getType().equals("date") ? dateTimeEditor : super.getPropertyEditor();
-    }
+//    protected PropertyEditor getPropertyEditor() throws JspException {
+//        return getType().equals("date") ? dateTimeEditor : super.getPropertyEditor();
+//    }
 }

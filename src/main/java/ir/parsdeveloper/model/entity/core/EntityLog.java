@@ -24,12 +24,12 @@ public class EntityLog extends BaseModel<Long> {
     private String tableName;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_GENERATOR_NAME)
-    @SequenceGenerator(name = SEQ_GENERATOR_NAME, sequenceName = SEQ_GENERATOR_NAME)
-    @Column(name = "ID", length = 3)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", length = 19)
     public Long getId() {
         return super.getId();
     }
+
 
     @Column(name = "ENTITY_ID", nullable = false)
     public Long getEntityId() {

@@ -39,7 +39,7 @@ public class Application extends BaseModel<Long> {
     }
 
     @Searchable()
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "", nullable = false)
     public String getName() {
         return name;
     }

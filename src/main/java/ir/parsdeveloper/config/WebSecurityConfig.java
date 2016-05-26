@@ -94,7 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new DefaultWebSecurityExpressionHandler();
     }
 
-    @Bean
+    @Bean(name = "passwordEncoder")
     public Md5PasswordEncoder passwordEncoder() {
         return new Md5PasswordEncoder();
     }

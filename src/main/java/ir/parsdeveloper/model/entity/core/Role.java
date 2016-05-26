@@ -1,5 +1,6 @@
 package ir.parsdeveloper.model.entity.core;
 
+import ir.parsdeveloper.commons.Constants;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -25,7 +26,14 @@ public class Role extends AuditModel<Long> {
 
     public final static String GET_ROLES_BY_USER_ID = "GET_ROLES_BY_USER_ID";
     public final static String GET_ROLES_BY_USER_ID_TEST_QUERY = "GET_ROLES_BY_USER_ID_TEST_QUERY";
-    protected final static String SEQ_GENERATOR_NAME = "SQ_CB_ROL";
+    public static final Role DOCTOR_ROLE = new Role(Constants.DOCTOR_ROLE);
+
+    public Role() {
+    }
+
+    public Role(Long id) {
+        setId(id);
+    }
 
     private String code;
     private String name;
@@ -39,16 +47,14 @@ public class Role extends AuditModel<Long> {
     private Set<User> users;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_GENERATOR_NAME)
-    @SequenceGenerator(name = SEQ_GENERATOR_NAME, sequenceName = SEQ_GENERATOR_NAME)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", length = 19)
     public Long getId() {
         return super.getId();
     }
 
-    //   @Valid
-    // @NotEmpty(message = "errors.code_is_required")
-        @Column(name = "CODE", unique = true, nullable = false, length = 30)
+
+    @Column(name = "CODE", unique = true, nullable = false, length = 30)
     public String getCode() {
         return code;
     }
@@ -92,7 +98,6 @@ public class Role extends AuditModel<Long> {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 
     @Version

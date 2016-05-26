@@ -54,9 +54,9 @@ public class DefaultSecurityService implements SecurityService, UserDetailsServi
                 user.getUsername()
                 , user.getPassword()
                 , user.getActive()
-                , user.getExpired()
-                , false//credentialsNonExpired
-                , user.getLocked()
+                , !user.getExpired()
+                , true//credentialsNonExpired
+                , !user.getLocked()
                 , authorities);
     }
 

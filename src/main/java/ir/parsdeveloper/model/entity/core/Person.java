@@ -20,6 +20,7 @@ public class Person extends AuditModel<Long> {
     private String address;
     private Long nationalId;
     private String fixedName;
+    private String email;
     protected final static String SEQ_GENERATOR_NAME = "SQ_CB_PERSON";
 
 
@@ -48,7 +49,7 @@ public class Person extends AuditModel<Long> {
         this.lastName = lastName;
     }
 
-    @Column(name = "BIRTH_DATE")
+    @Column(name = "BIRTH_DATE", columnDefinition = "Date")
     public Date getBirthDate() {
         return birthDate;
     }
@@ -100,5 +101,14 @@ public class Person extends AuditModel<Long> {
 
     public void setFixedName(String fixedName) {
         this.fixedName = fixedName;
+    }
+
+    @Column(name = "EMAIL")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

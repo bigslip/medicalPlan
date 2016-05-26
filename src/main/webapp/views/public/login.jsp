@@ -15,21 +15,21 @@
     <meta charset="UTF-8"/>
 
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-    <link href="${contextPath}/resources/styles/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="${contextPath}/resources/styles/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"
-          media="screen"/>
-    <link href="${contextPath}/resources/styles/bootstrap/bootstrap-rtl.css" rel="stylesheet" media="screen"/>
+    <%--<link href="${contextPath}/resources/styles/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"/>--%>
+    <%--<link href="${contextPath}/resources/styles/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"--%>
+          <%--media="screen"/>--%>
+    <%--<link href="${contextPath}/resources/styles/bootstrap/bootstrap-rtl.css" rel="stylesheet" media="screen"/>--%>
 
 
-    <link href="${contextPath}/resources/styles/core/base.css" rel="stylesheet" media="screen"/>
+    <%--<link href="${contextPath}/resources/styles/core/base.css" rel="stylesheet" media="screen"/>--%>
 
-    <script src="${contextPath}/resources/scripts/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <%--<script src="${contextPath}/resources/scripts/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>--%>
 
-    <script src="${contextPath}/resources/scripts/jquery/jquery-2.1.1.min.js"></script>
-    <script src="${contextPath}/resources/scripts/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+    <%--<script src="${contextPath}/resources/scripts/jquery/jquery-2.1.1.min.js"></script>--%>
+    <%--<script src="${contextPath}/resources/scripts/jquery/jquery-ui-1.10.4.custom.min.js"></script>--%>
 
-    <script src="${contextPath}/resources/scripts/bootstrap/bootstrap.min.js"></script>
-    <script src="${contextPath}/resources/scripts/assets.js"></script>
+    <%--<script src="${contextPath}/resources/scripts/bootstrap/bootstrap.min.js"></script>--%>
+    <%--<script src="${contextPath}/resources/scripts/assets.js"></script>--%>
 
 </head>
 <body id="login">

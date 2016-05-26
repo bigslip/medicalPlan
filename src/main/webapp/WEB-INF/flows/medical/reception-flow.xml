@@ -3,7 +3,7 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
-      parent="base-flow" start-state="receptionSingleView">
+      parent="base-flow">
 
     <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
 
@@ -12,21 +12,24 @@
         <set name="flowScope.formAction" value="receptionAction"/>
     </on-start>
 
-    <view-state id="receptionSingleView" view="receptionView" parent="base-flow#entitySingleView" model="patient">
+    <view-state id="entitySingleView" view="receptionView" parent="base-flow#entitySingleView" model="patient">
         <on-entry>
             <evaluate expression="formAction.setupForm"/>
         </on-entry>
-        <transition on="next" bind="true" validate="false" to="nextAction"/>
+        <transition on="save" bind="true" validate="false" to="saveEntity"/>
     </view-state>
 
-    <action-state id="nextAction">
-        <evaluate expression="formAction.nextAction"/>
-        <transition on="success" to="planTemplateFlow"/>
+    <view-state id="entityListView" view="receptionListView" parent="base-flow#entityListView">
+        <transition on="add2" to="entitySingleView"/>
+        <transition on="plan" bind="false" validate="false" to="planAction2"/>
+    </view-state>
+
+    <action-state id="planAction2">
+        <evaluate expression="formAction.planAction2"/>
+        <transition on="success" to="planFlow"/>
+        <transition on="error" to="entityListView"/>
     </action-state>
-
-    <subflow-state id="planTemplateFlow" subflow="plan-template-flow">
-        <input name="patient" value="flowScope.patient"/>
+    <subflow-state id="planFlow" subflow="plan-flow">
+        <input name="patientList" value="flowScope.patientList"/>
     </subflow-state>
-
-
 </flow>

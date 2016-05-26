@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "DOCTOR")
 public class Doctor extends AuditModel<Long> {
+
     private Person person;
 
 

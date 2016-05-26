@@ -12,6 +12,7 @@ public final class Constants implements Serializable {
     public static final String PRODUCT_PROFILE = "PRODUCT";
     public static final String TEST_PROFILE = "TEST";
 
+
     public static final String WEB_SERVICE_LOCATION_URL = "/ws";
 
 
@@ -57,4 +58,12 @@ public final class Constants implements Serializable {
     public static final String CAPTCHA_SESSION_KEY = "KAPTCHA_SESSION_KEY";
 
     public static final String ANONYMOUS_USER_PRINCIPAL = "anonymousUser";
+
+    public static final String DEFAULT_PASSWORD = "123";
+
+
+
+    //------------------------Role-----------------------
+    public static final Long DOCTOR_ROLE = 2L;
+
 }

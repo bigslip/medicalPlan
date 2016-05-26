@@ -25,7 +25,7 @@
                 <p:input type="inputText" path="person.lastName" labelKey="lastName" required="false"/>
             </p:row>
             <p:row col="2">
-                <p:input type="date" path="person.birthDate" labelKey="birthDate" required="false" cssStyle="width:150px"/>
+                <p:input type="inputText" path="person.birthDate" labelKey="birthDate" required="false" cssStyle="width:150px"/>
             </p:row>
             <p:row col="2">
 
@@ -42,10 +42,10 @@
             </p:row>
 
             <p:row col="2">
-                <p:input type="textarea" path="person.address" labelKey="address" required="false"/>
+                <p:input type="textarea" path="person.address" labelKey="address" required="true"/>
             </p:row>
             <p:row col="2">
-                <p:input type="inputText" path="person.nationalId" labelKey="nationalId" required="false"/>
+                <p:input type="inputText" path="person.nationalId" labelKey="nationalId" required="true"/>
             </p:row>
 
         </div>

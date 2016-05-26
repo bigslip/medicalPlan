@@ -13,6 +13,7 @@ import ir.parsdeveloper.service.api.business.core.RoleService;
 import ir.parsdeveloper.service.api.medical.ReceptionService;
 import ir.parsdeveloper.web.action.core.AbstractFormAction;
 import ir.parsdeveloper.ws.client.SampleWebServiceClient;
+import org.apache.poi.ss.formula.functions.Even;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
@@ -52,11 +53,14 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
 
     @Override
     public Event saveEntity(RequestContext context) throws ActionException, ServiceException {
-//        Person formObject = getFormObject(context);
-//        formObject.setBirthDate(new Date());
-//        User user=new User();
-//        user.setId(1L);
-//        receptionService.addPerson(formObject, user);
+        Patient formObject = getFormObject(context);
+        User currentUser = getCurrentUser(context);
+        try {
+            receptionService.addPatient(formObject, currentUser);
+        } catch (ServiceException e) {
+            messageContext.addError(context, e);
+            return error();
+        }
         return success();
     }
 
@@ -67,7 +71,7 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
 
     @Override
     protected List<? extends Patient> prepareEntityList(RequestContext context, int currentPage, int pageSize) throws BaseException {
-        return null;
+        return daoService.find("select q from Patient q");
     }
 
     @Override
@@ -87,7 +91,13 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
 
     public Event nextAction(RequestContext context) throws BaseException {
         Patient patient = getFormObject(context);
-        putInFlowScope(context,"patient",patient);
+        putInFlowScope(context, "patient", patient);
+        return success();
+    }
+
+    public Event planAction2(RequestContext context) throws ActionException {
+        List<Patient> patientList = (List) getSelectedRowsAsEntityList(context);
+        putInFlowScope(context, "patientList", patientList);
         return success();
     }
 

@@ -41,7 +41,7 @@ public class RoleFormAction extends AbstractFormAction<Role> {
 //        webServiceClient.callWs();
         //roleService.test();
         roleService.getUserRole(getCurrentUser(context));
-        putInFlowScope(context, "applicationList", roleService.getSubSystemList());
+
         return super.initFlow(context);
     }
 

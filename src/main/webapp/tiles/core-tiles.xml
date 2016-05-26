@@ -31,9 +31,17 @@
     <definition name="receptionView" extends="defaultLayout">
         <put-attribute name="content" value="/views/secured/medical/person/receptionSingleView.jsp"/>
     </definition>
-    <definition name="planTemplateSingleView" extends="defaultLayout">
-        <put-attribute name="content" value="/views/secured/medical/planTemplate/planTemplateSingleView.jsp"/>
+    <definition name="receptionListView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/person/receptionListView.jsp"/>
     </definition>
+
+    <definition name="planSingleView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/planTemplate/planSingleView.jsp"/>
+    </definition>
+    <definition name="planListView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/planTemplate/planListView.jsp"/>
+    </definition>
+
     <definition name="registerDoctorView" extends="defaultLayout">
         <put-attribute name="content" value="/views/secured/medical/registerDoctor/registerDoctorListView.jsp"/>
     </definition>
@@ -42,13 +50,13 @@
     </definition>
 
     <!--     ***Role***     -->
-    <!--    <definition name="roleListView" extends="defaultLayout">
+      <definition name="roleListView" extends="defaultLayout">
             <put-attribute name="content" value="/views/secured/core/role/roleListView.jsp"/>
         </definition>
 
         <definition name="roleSingleView" extends="defaultLayout">
             <put-attribute name="content" value="/views/secured/core/role/roleSingleView.jsp"/>
-        </definition>-->
+        </definition>
 
 
 </tiles-definitions>

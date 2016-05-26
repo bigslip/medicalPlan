@@ -26,8 +26,6 @@
 <script>
 
     function setSelectedRow(rowIndex) {
-        //$("#SELECTED_ROW_ID").val(rowIndex);
-        //$("#"+tableUID+"_selected_rows").val(rowIndex);
         $("#doctor_selected_rows").val(rowIndex);
     }
 </script>

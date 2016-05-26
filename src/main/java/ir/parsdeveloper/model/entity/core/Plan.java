@@ -2,6 +2,7 @@ package ir.parsdeveloper.model.entity.core;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by bahram on 5/3/16.
@@ -9,7 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name = "PLAN")
 public class Plan extends AuditModel<Long> {
-    private Patient patient;
+    private List<Patient> patientList;
     private Period period;
     private Date startDate;
     private Date endDate;
@@ -27,12 +28,13 @@ public class Plan extends AuditModel<Long> {
     @JoinTable(name = "PLAN_PATIENT",
             joinColumns = @JoinColumn(name = "PLAN_ID"), inverseJoinColumns = @JoinColumn(name = "PATIENT_ID")
     )
-    public Patient getPatient() {
-        return patient;
+
+    public List<Patient> getPatientList() {
+        return patientList;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientList(List<Patient> patientList) {
+        this.patientList = patientList;
     }
 
 
@@ -57,7 +59,7 @@ public class Plan extends AuditModel<Long> {
     }
 
     @ManyToOne
-    @JoinColumn(name = "PLAN_STATUS")
+    @JoinColumn(name = "PLAN_STATUS_ID")
     public PlanStatus getPlanStatus() {
         return planStatus;
     }

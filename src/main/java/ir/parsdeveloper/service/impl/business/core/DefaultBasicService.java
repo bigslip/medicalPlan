@@ -4,6 +4,7 @@ import ir.parsdeveloper.commons.MessageCodes;
 import ir.parsdeveloper.commons.exception.BaseException;
 import ir.parsdeveloper.commons.exception.ServiceException;
 import ir.parsdeveloper.commons.utils.StringUtils;
+import ir.parsdeveloper.model.entity.core.AuditModel;
 import ir.parsdeveloper.model.entity.core.BaseModel;
 import ir.parsdeveloper.model.entity.core.User;
 import ir.parsdeveloper.service.api.business.core.BasicService;
@@ -47,6 +48,16 @@ public class DefaultBasicService<T extends BaseModel> implements BasicService<T>
         } catch (Exception e) {
             throw new ServiceException(MessageCodes.UNKNOWN_ERROR_MESSAGE);
         }
+        return daoService.save(entity);
+    }
+
+    public <E extends AuditModel> E saveEntity(E entity, User user) throws ServiceException {
+        try {
+            detachTransientObject(entity);
+        } catch (Exception e) {
+            throw new ServiceException(MessageCodes.UNKNOWN_ERROR_MESSAGE);
+        }
+        entity.setCreator(user);
         return daoService.save(entity);
     }
 

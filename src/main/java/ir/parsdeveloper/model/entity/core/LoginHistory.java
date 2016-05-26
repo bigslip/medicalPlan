@@ -23,12 +23,12 @@ public class LoginHistory extends BaseModel<Long> {
     private Integer duration;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_GENERATOR_NAME)
-    @SequenceGenerator(name = SEQ_GENERATOR_NAME, sequenceName = SEQ_GENERATOR_NAME)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", length = 19)
     public Long getId() {
         return super.getId();
     }
+
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "LOGIN_TIME", nullable = false, columnDefinition = "DATETIME")

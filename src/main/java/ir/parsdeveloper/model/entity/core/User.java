@@ -22,7 +22,7 @@ public class User extends AuditModel<Long> {
 
     public final static String FIND_BY_USER_NAME = "FIND_BY_USER_NAME";
     public final static String FIND_BY_USER_NAME_WITH_ROLES = "FIND_BY_USER_NAME_WITH_ROLES";
-    protected final static String SEQ_GENERATOR_NAME = "SQ_CB_USER";
+    //    protected final static String SEQ_GENERATOR_NAME = "SQ_CB_USER";
     private String nickName;
     private String fixedName;
     private String username;
@@ -35,6 +35,7 @@ public class User extends AuditModel<Long> {
     private Boolean expired = false;
     private Set<Role> roles;
 
+
     public User() {
     }
 
@@ -43,8 +44,7 @@ public class User extends AuditModel<Long> {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_GENERATOR_NAME)
-    @SequenceGenerator(name = SEQ_GENERATOR_NAME, sequenceName = SEQ_GENERATOR_NAME)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", length = 19)
     public Long getId() {
         return super.getId();
@@ -135,7 +135,7 @@ public class User extends AuditModel<Long> {
     }
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinTable(name = "CB_USER_ROLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"),
             uniqueConstraints = @UniqueConstraint(name = "CB_USER_ROLE_UN", columnNames = {"USER_ID", "ROLE_ID"}))
     public Set<Role> getRoles() {
@@ -155,4 +155,6 @@ public class User extends AuditModel<Long> {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
+
+
 }

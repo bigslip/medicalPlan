@@ -13,9 +13,9 @@ public class Period extends AuditModel<Long> {
 
     private Date startDate;
     private Date endDate;
-    private Boolean disabled;
-    private Doctor doctor;
+    private Boolean disabled = false;
     private PlanTemplate planTemplate;
+    private Doctor doctor;
 
 
     @Id
@@ -54,15 +54,6 @@ public class Period extends AuditModel<Long> {
         this.disabled = disabled;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "DOCTOR_ID")
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
 
     @ManyToOne
     @JoinColumn(name = "TEMPLATE_ID")
@@ -72,5 +63,16 @@ public class Period extends AuditModel<Long> {
 
     public void setPlanTemplate(PlanTemplate planTemplate) {
         this.planTemplate = planTemplate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "DOCTOR_ID")
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 }
