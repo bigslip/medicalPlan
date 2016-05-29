@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by bahram on 5/3/16.
  */
 @Entity
-@Table(name = "nurse")
+@Table(name = "NURSE")
 public class Nurse extends AuditModel<Long> {
     private Person person;
 
@@ -19,7 +19,7 @@ public class Nurse extends AuditModel<Long> {
     }
 
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "PERSON_ID")
     public Person getPerson() {
         return person;
     }

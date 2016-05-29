@@ -24,7 +24,7 @@ public class Plan extends AuditModel<Long> {
         return super.getId();
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "PLAN_PATIENT",
             joinColumns = @JoinColumn(name = "PLAN_ID"), inverseJoinColumns = @JoinColumn(name = "PATIENT_ID")
     )

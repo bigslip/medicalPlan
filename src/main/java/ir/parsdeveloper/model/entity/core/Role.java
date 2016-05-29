@@ -1,6 +1,6 @@
 package ir.parsdeveloper.model.entity.core;
 
-import ir.parsdeveloper.commons.Constants;
+
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -20,13 +20,15 @@ import java.util.Set;
 @NamedQueries({
         @NamedQuery(name = Role.GET_ROLES_BY_USER_ID, query = "select r from Role  r inner join r.users u where r.active=true and u.id= :userId",
                 hints = {@QueryHint(name = QueryHints.COMMENT, value = "/*+ index(r,index1)*/")}),
-        @NamedQuery(name = Role.GET_ROLES_BY_USER_ID_TEST_QUERY, query = "select r from Role  r inner join r.users u where u.id= :userId")
+        @NamedQuery(name = Role.GET_ROLES_BY_USER_ID_TEST_QUERY, query = "select r from Role  r inner join r.users u where u.id= :userId"),
+        @NamedQuery(name = Role.GET_ROLES_BY_ROLE_ID,query = "from Role r where r.id in(:roleId)")
 })
 public class Role extends AuditModel<Long> {
 
     public final static String GET_ROLES_BY_USER_ID = "GET_ROLES_BY_USER_ID";
     public final static String GET_ROLES_BY_USER_ID_TEST_QUERY = "GET_ROLES_BY_USER_ID_TEST_QUERY";
-    public static final Role DOCTOR_ROLE = new Role(Constants.DOCTOR_ROLE);
+    public final static String GET_ROLES_BY_ROLE_ID = "GET_ROLES_BY_ROLE_ID";
+
 
     public Role() {
     }

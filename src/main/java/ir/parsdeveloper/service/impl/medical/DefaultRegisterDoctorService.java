@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.*;
 
 
 /**
@@ -26,7 +26,7 @@ import java.util.Collections;
 @Service
 public class DefaultRegisterDoctorService extends DefaultPersonService<Doctor> implements RegisterDoctorService {
 
-    private UserSetupService userSetupService;
+
 
     @Override
     public Doctor addDoctor(Doctor doctor, User currentUser) throws ServiceException {
@@ -37,23 +37,24 @@ public class DefaultRegisterDoctorService extends DefaultPersonService<Doctor> i
         Person person = doctor.getPerson();
         User doctorUser = new User();
 
-        person = addPerson(person,currentUser);
+        person = addPerson(person, currentUser);
 
         doctor.setPerson(person);
         doctor = saveEntity(doctor, currentUser);
 
-        Role role = daoService.findById(Role.class, Constants.DOCTOR_ROLE);
-        doctorUser.setRoles(Collections.singleton(role));
+
+        Map<String, Object> params = new HashMap<>(1);
+        params.put("roleId", Arrays.asList(Constants.PLAN_ROLE, Constants.RECEPTION_ROLE));
+        List<Role> roleList = daoService.findByNamedQuery(Role.GET_ROLES_BY_ROLE_ID, params);
+        doctorUser.setRoles(new HashSet<>(roleList));
+
         userSetupService.addMedicalUser(doctorUser, person, currentUser);
 
         return doctor;
 
     }
 
-    @Autowired
-    public void setUserSetupService(UserSetupService userSetupService) {
-        this.userSetupService = userSetupService;
-    }
+
 
 
 }

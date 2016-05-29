@@ -52,3 +52,13 @@
 
 
 </div>
+
+<script>
+    $(".numerical").keypress(function (event) {
+        if (event.charCode >= 47 && event.charCode <= 57) {
+            return true;
+        } else
+            return false;
+    });
+
+</script>

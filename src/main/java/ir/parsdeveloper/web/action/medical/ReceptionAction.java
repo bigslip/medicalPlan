@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -72,6 +73,7 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
     @Override
     protected List<? extends Patient> prepareEntityList(RequestContext context, int currentPage, int pageSize) throws BaseException {
         return daoService.find("select q from Patient q");
+
     }
 
     @Override
@@ -101,5 +103,37 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
         return success();
     }
 
+    @Override
+    public Event onListViewEntry(RequestContext context) throws Exception {
+        Event event = super.onListViewEntry(context);
+        Patient patient = getFormObject(context);
+        if (patient.getPerson() == null) {
+            Person person = new Person();
+            patient.setPerson(person);
+        }
 
+        return event;
+    }
+
+    public Event searchAction(RequestContext context) throws ActionException {
+        Patient patient = getFormObject(context);
+        Person person = patient.getPerson();
+        List<Patient> patientList = (List) daoService.createQuery("select pa from Patient pa inner join pa.person p where p.nationalId=:nationalId")
+                .setParameter("nationalId", person.getNationalId()).getResultList();
+        putInFlowScope(context, "tempPatientList", patientList);
+        putInFlowScope(context,"visiable",false);
+        return success();
+    }
+
+    public Event selectAction(RequestContext context) throws ActionException {
+        Patient patient = getSelectedRowAsEntity(context);
+        List<Patient> patientAddedList = (List) getFromFlowScope(context, "patientAddedList");
+        if (patientAddedList == null) {
+            patientAddedList = new ArrayList<>();
+        }
+        patientAddedList.add(patient);
+        putInFlowScope(context, "patientAddedList", patientAddedList);
+        putInFlowScope(context,"visiable",true);
+        return success();
+    }
 }

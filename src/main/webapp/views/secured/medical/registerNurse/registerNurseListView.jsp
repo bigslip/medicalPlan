@@ -6,14 +6,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/views/commons/tagLib.jsp" %>
-<style>
-    label, #gender {
-        color: #000000;
-        font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
-        text-transform: capitalize;
 
-    }
-</style>
 <p:form>
     <p:table>
         <p:column titleKey="firstName" property="person.firstName"/>
@@ -22,7 +15,6 @@
         <p:column titleKey="phone" property="person.phone"/>
         <p:column titleKey="birthDate" property="person.birthDate"/>
         <p:editCell/>
-
     </p:table>
     <p:button event="add" primary="true"
               valueKey="Add"/>
@@ -30,6 +22,6 @@
 <script>
 
     function setSelectedRow(rowIndex) {
-        $("#doctor_selected_rows").val(rowIndex);
+        $("#nurse_selected_rows").val(rowIndex);
     }
 </script>

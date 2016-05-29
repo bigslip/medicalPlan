@@ -49,12 +49,12 @@ public class RegisterDoctorAction extends AbstractFormAction<Doctor> {
     @Transactional(rollbackFor = Exception.class)
     public Event saveEntity(RequestContext context) throws ActionException, ServiceException {
         Doctor doctor = getFormObject(context);
-        doctor.setCreator(getCurrentUser(context));
 
         try {
             registerDoctorService.addDoctor(doctor, getCurrentUser(context));
         } catch (ServiceException e) {
             messageContext.addError(context, e.getMessage());
+            return error();
         }
 
         return success();

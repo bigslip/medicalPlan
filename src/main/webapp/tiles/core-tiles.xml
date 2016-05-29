@@ -34,6 +34,12 @@
     <definition name="receptionListView" extends="defaultLayout">
         <put-attribute name="content" value="/views/secured/medical/person/receptionListView.jsp"/>
     </definition>
+    <definition name="addPlanListView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/person/addPlanListView.jsp"/>
+    </definition>
+    <definition name="patientPlanListView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/person/patientPlanListView.jsp"/>
+    </definition>
 
     <definition name="planSingleView" extends="defaultLayout">
         <put-attribute name="content" value="/views/secured/medical/planTemplate/planSingleView.jsp"/>
@@ -49,14 +55,21 @@
         <put-attribute name="content" value="/views/secured/medical/registerDoctor/registerDoctorSingleView.jsp"/>
     </definition>
 
-    <!--     ***Role***     -->
-      <definition name="roleListView" extends="defaultLayout">
-            <put-attribute name="content" value="/views/secured/core/role/roleListView.jsp"/>
-        </definition>
+    <definition name="registerNurseListView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/registerDoctor/registerDoctorListView.jsp"/>
+    </definition>
+    <definition name="registerNurseSingleView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/medical/registerDoctor/registerDoctorSingleView.jsp"/>
+    </definition>
 
-        <definition name="roleSingleView" extends="defaultLayout">
-            <put-attribute name="content" value="/views/secured/core/role/roleSingleView.jsp"/>
-        </definition>
+    <!--     ***Role***     -->
+    <definition name="roleListView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/core/role/roleListView.jsp"/>
+    </definition>
+
+    <definition name="roleSingleView" extends="defaultLayout">
+        <put-attribute name="content" value="/views/secured/core/role/roleSingleView.jsp"/>
+    </definition>
 
 
 </tiles-definitions>

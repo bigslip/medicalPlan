@@ -114,11 +114,11 @@
     <end-state id="finish"/>
 
 
-    <global-transitions>
-        <transition on-exception="java.lang.NullPointerException" to="errorView"/>
-        <transition on-exception="java.lang.Exception" to="errorView"/>
+    <!--<global-transitions>-->
+        <!--<transition on-exception="java.lang.NullPointerException" to="errorView"/>-->
+        <!--<transition on-exception="java.lang.Exception" to="errorView"/>-->
 
-    </global-transitions>
+    <!--</global-transitions>-->
 
     <exception-handler bean="flowExceptionHandler"/>
 

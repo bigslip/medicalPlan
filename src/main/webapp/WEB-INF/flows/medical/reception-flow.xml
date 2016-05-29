@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
       parent="base-flow">
 
-    <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
+    <!--<secured match="any" attributes="ROLE_ADMIN,ROLE_RECEPTION"/>-->
 
 
     <on-start>
@@ -21,7 +21,23 @@
 
     <view-state id="entityListView" view="receptionListView" parent="base-flow#entityListView">
         <transition on="add2" to="entitySingleView"/>
-        <transition on="plan" bind="false" validate="false" to="planAction2"/>
+        <transition on="plan" bind="false" validate="false" to="patientPlanListView">
+            <set name="flowScope.patientAddedList" value="null"/>
+            <set name="flowScope.tempPatientList" value="null"/>
+
+        </transition>
+    </view-state>
+
+    <view-state id="addPlanListView" view="addPlanListView" parent="base-flow#entityListView" model="patient">
+        <transition on="search" to="searchAction" bind="true" validate="false"/>
+        <transition on="back" to="patientPlanListView" bind="false" validate="false"/>
+        <transition on="select" to="selectAction" bind="false" validate="false"/>
+    </view-state>
+
+    <view-state id="patientPlanListView" view="patientPlanListView" parent="base-flow#entityListView" model="patient">
+        <transition on="add" to="addPlanListView" bind="false" validate="false"/>
+        <transition on="back" to="entityListView" bind="false" validate="false"/>
+        <transition on="plan" to="planFlow" bind="false" validate="false"/>
     </view-state>
 
     <action-state id="planAction2">
@@ -29,7 +45,20 @@
         <transition on="success" to="planFlow"/>
         <transition on="error" to="entityListView"/>
     </action-state>
+
     <subflow-state id="planFlow" subflow="plan-flow">
-        <input name="patientList" value="flowScope.patientList"/>
+        <input name="patientList" value="flowScope.patientAddedList"/>
+        <transition on="finish" to="listAction"/>
     </subflow-state>
+
+    <action-state id="searchAction">
+        <evaluate expression="formAction.searchAction"/>
+        <transition on="success" to="addPlanListView"/>
+        <transition on="error" to="addPlanListView"/>
+    </action-state>
+    <action-state id="selectAction">
+        <evaluate expression="formAction.selectAction"/>
+        <transition on="success" to="patientPlanListView"/>
+        <transition on="error" to="addPlanListView"/>
+    </action-state>
 </flow>
