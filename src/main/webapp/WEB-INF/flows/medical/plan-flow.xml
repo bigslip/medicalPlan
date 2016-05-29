@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      parent="base-flow">
+
+    <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
+
+    <input name="patientList" value="flowScope.patientList"/>
+
+    <on-start>
+        <set name="flowScope.formAction" value="planAction"/>
+    </on-start>
+
+    <view-state id="entitySingleView" view="planSingleView" parent="base-flow#entitySingleView"
+                model="plan">
+        <on-entry>
+            <evaluate expression="formAction.setupForm"/>
+        </on-entry>
+        <transition on="save" to="saveEntity"/>
+    </view-state>
+
+    <view-state id="entityListView" view="planListView" parent="base-flow#entityListView">
+        <transition on="plan" to="patientPlanAction"/>
+    </view-state>
+
+    <action-state id="patientPlanAction">
+        <evaluate expression="formAction.patientPlanAction"/>
+        <transition on="success" to="finish"/>
+    </action-state>
+    <end-state id="finish"/>
+</flow>
