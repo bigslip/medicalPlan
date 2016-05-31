@@ -7,15 +7,16 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "OBSERV_HEART_RATE")
-public class ObservHeartRate extends AuditModel<Long> {
+@PrimaryKeyJoinColumn(name = "ID", referencedColumnName = "ID")
+public class ObservHeartRate  extends Observation  {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", length = 19)
-    public Long getId() {
-        return super.getId();
-    }
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "ID", length = 19)
+//    public Long getId() {
+//        return super.getId();
+//    }
 
     private Long hearRate;
     @Column(name = "HEAR_RATE")
