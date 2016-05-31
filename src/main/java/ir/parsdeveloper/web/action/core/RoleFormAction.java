@@ -23,7 +23,7 @@ import java.util.List;
 public class RoleFormAction extends AbstractFormAction<Role> {
 
     RoleService roleService;
-    SampleWebServiceClient webServiceClient;
+//    SampleWebServiceClient webServiceClient;
 
 
     public RoleFormAction() {
@@ -92,10 +92,7 @@ public class RoleFormAction extends AbstractFormAction<Role> {
         return this.roleService;
     }
 
-    @Autowired
-    public void setWebServiceClient(SampleWebServiceClient webServiceClient) {
-        this.webServiceClient = webServiceClient;
-    }
+
 
 
 }

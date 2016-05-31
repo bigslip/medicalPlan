@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * @author hadi tayebi
  */
-@Configuration
+//@Configuration
 public class WebServiceConfig extends WsConfigurationSupport {
     public final static int WEB_SERVICE_TIMEOUT = 60000;
 

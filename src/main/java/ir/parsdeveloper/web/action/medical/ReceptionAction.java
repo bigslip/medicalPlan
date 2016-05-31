@@ -42,6 +42,14 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
     }
 
     @Override
+    public Event initFlow(RequestContext context) throws BaseException {
+        Event event = super.initFlow(context);
+        List<Patient> patientList = new ArrayList<>();
+        putInFlowScope(context, "patientAddedList", patientList);
+        return event;
+    }
+
+    @Override
     public Event setupForm(RequestContext context) throws Exception {
         Event event = super.setupForm(context);
         Patient patient = getFormObject(context);
@@ -121,7 +129,6 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
         List<Patient> patientList = (List) daoService.createQuery("select pa from Patient pa inner join pa.person p where p.nationalId=:nationalId")
                 .setParameter("nationalId", person.getNationalId()).getResultList();
         putInFlowScope(context, "tempPatientList", patientList);
-        putInFlowScope(context,"visiable",false);
         return success();
     }
 
@@ -131,9 +138,11 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
         if (patientAddedList == null) {
             patientAddedList = new ArrayList<>();
         }
+        if (patientAddedList.contains(patient)) {
+            patientAddedList.remove(patient);
+        }
         patientAddedList.add(patient);
         putInFlowScope(context, "patientAddedList", patientAddedList);
-        putInFlowScope(context,"visiable",true);
         return success();
     }
 }

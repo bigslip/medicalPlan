@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author hadi tayebi
  */
-@Component
+//@Component
 public class SampleWebServiceClient extends WebServiceClient {
 
     public HelloWorldResponse callWs() {

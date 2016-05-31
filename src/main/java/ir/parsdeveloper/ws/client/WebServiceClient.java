@@ -15,7 +15,7 @@ import javax.annotation.PostConstruct;
  * @author hadi tayebi
  */
 
-@Service
+//@Service
 public abstract class WebServiceClient extends WebServiceGatewaySupport {
 
     public final static Integer SOAP_VERSION_11 = 1;

@@ -20,10 +20,10 @@
     </view-state>
 
     <view-state id="entityListView" view="receptionListView" parent="base-flow#entityListView">
+
         <transition on="add2" to="entitySingleView"/>
         <transition on="plan" bind="false" validate="false" to="patientPlanListView">
-            <set name="flowScope.patientAddedList" value="null"/>
-            <set name="flowScope.tempPatientList" value="null"/>
+
 
         </transition>
     </view-state>

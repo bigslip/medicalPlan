@@ -8,7 +8,7 @@
 <%@include file="/views/commons/tagLib.jsp" %>
 
 <p:form modelAttribute="patient">
-    <c:if test="${not empty patientAddedList}">
+
         <p:table list="${patientAddedList}" bypassSelectCell="true">
             <p:column titleKey="firstName" property="person.firstName"/>
             <p:column titleKey="lastName" property="person.lastName"/>
@@ -17,7 +17,7 @@
             <p:column titleKey="birthDate" property="person.birthDate"/>
 
         </p:table>
-    </c:if>
+ 
     <p:button event="add" primary="true"
               valueKey="Add patient"/>
     <c:if test="${not empty patientAddedList}">

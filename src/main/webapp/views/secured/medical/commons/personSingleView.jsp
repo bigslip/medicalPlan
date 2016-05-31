@@ -38,14 +38,14 @@
                 </p>
             </p:row>
             <p:row col="2">
-                <p:input type="inputText" path="person.phone" labelKey="phone" required="false"/>
+                <p:input type="inputText" path="person.phone" labelKey="phone" required="false" cssClass="numerical"/>
             </p:row>
 
             <p:row col="2">
                 <p:input type="textarea" path="person.address" labelKey="address" required="true"/>
             </p:row>
             <p:row col="2">
-                <p:input type="inputText" path="person.nationalId" labelKey="nationalId" required="true"/>
+                <p:input type="inputText" path="person.nationalId" labelKey="nationalId" required="true" cssClass="numerical"/>
             </p:row>
 
         </div>
