@@ -22,11 +22,11 @@
             <fieldset>
                 <legend>Plan:</legend>
                 <p:row col="2">
-                    <p:input path="startDate"  labelKey="startDate" type="inputText" cssStyle="width:150px"/>
+                    <p:input path="startDate" labelKey="startDate" type="inputText" cssStyle="width:150px"/>
                 </p:row>
 
                 <p:row col="2">
-                    <p:input path="endDate" labelKey="endDate" type="inputText" cssStyle="width:150px" />
+                    <p:input path="endDate" labelKey="endDate" type="inputText" cssStyle="width:150px"/>
                 </p:row>
             </fieldset>
 
@@ -43,9 +43,9 @@
 
                 <p:textarea path="period.planTemplate.description" labelKey="description"/>
             </fieldset>
-
-            <p:button event="save" valueKey="save" cssClass="art-button"/>
-
+            <security:authorize access="hasAnyAuthority('ROLE_PLAN')">
+                <p:button event="save" valueKey="save" cssClass="art-button"/>
+            </security:authorize>
             <p:button event="back" valueKey="back" cssClass="art-button"/>
         </div>
     </p:form>

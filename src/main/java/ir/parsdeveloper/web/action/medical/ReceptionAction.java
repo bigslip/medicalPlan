@@ -108,6 +108,7 @@ public class ReceptionAction extends AbstractFormAction<Patient> {
     public Event planAction2(RequestContext context) throws ActionException {
         List<Patient> patientList = (List) getSelectedRowsAsEntityList(context);
         putInFlowScope(context, "patientList", patientList);
+        putInFlowScope(context, "visible", true);
         return success();
     }
 

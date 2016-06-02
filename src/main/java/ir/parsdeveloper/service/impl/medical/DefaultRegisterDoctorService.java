@@ -27,34 +27,34 @@ import java.util.*;
 public class DefaultRegisterDoctorService extends DefaultPersonService<Doctor> implements RegisterDoctorService {
 
 
-
     @Override
     public Doctor addDoctor(Doctor doctor, User currentUser) throws ServiceException {
+
 
         if (doctor.getPerson() == null) {
             throw new ServiceException("error.person_is_null");
         }
+
         Person person = doctor.getPerson();
         User doctorUser = new User();
 
         person = addPerson(person, currentUser);
 
-        doctor.setPerson(person);
-        doctor = saveEntity(doctor, currentUser);
-
 
         Map<String, Object> params = new HashMap<>(1);
-        params.put("roleId", Arrays.asList(Constants.PLAN_ROLE, Constants.RECEPTION_ROLE));
+        params.put("roleId", Arrays.asList(Constants.ROLE_PLAN, Constants.RECEPTION_ROLE));
         List<Role> roleList = daoService.findByNamedQuery(Role.GET_ROLES_BY_ROLE_ID, params);
         doctorUser.setRoles(new HashSet<>(roleList));
 
-        userSetupService.addMedicalUser(doctorUser, person, currentUser);
+        doctorUser = userSetupService.addMedicalUser(doctorUser, person, currentUser);
+
+        doctor.setPerson(person);
+        doctor.setUser(doctorUser);
+        doctor = saveEntity(doctor, currentUser);
 
         return doctor;
 
     }
-
-
 
 
 }

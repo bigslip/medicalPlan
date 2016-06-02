@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="art-content-layout-wrapper layout-item-1">
 
-                                        <tiles:insertAttribute name="content"/>
+                                    <tiles:insertAttribute name="content"/>
 
                                     <input type='hidden' id='_eventId' name='_eventId'/>
                                 </div>
@@ -39,36 +39,47 @@
 
                         </article>
                     </div>
-                    <div class="art-layout-cell art-sidebar1">
+                    <div class="art-layout-cell art-sidebar1" style="position: static">
                         <div class="art-vmenublock clearfix">
                             <div class="art-vmenublockheader">
                                 <h3 class="t">Navigation</h3>
                             </div>
                             <div class="art-vmenublockcontent">
                                 <ul class="art-vmenu">
-                                    <li><a href="departments.html" class="">Departments</a></li>
-                                    <li><a href="training.html" class="">Training</a></li>
-                                    <li><a href="resources.html" class="">Resources</a></li>
-                                    <li><a href="about-us.html" class="">About Us</a></li>
-                                    <li><a href="contact-us.html" class="">Contact Us</a></li>
-                                    <li><a href="reception.html" class="active">Reception</a></li>
+                                    <security:authorize access="hasAnyAuthority('ROLE_ADMIN')">
+                                        <li><a href="${pageContext.request.contextPath}/register-nurse-flow"
+                                               class="">Nurses</a></li>
+                                    </security:authorize>
+                                    <security:authorize access="hasAnyAuthority('ROLE_ADMIN','ROLE_PLAN')">
+                                        <li><a href="${pageContext.request.contextPath}/plan-flow" class="">Plan</a>
+                                        </li>
+                                    </security:authorize>
+
+                                    <li><a href="${pageContext.request.contextPath}/reception-flow" class="active">Reception</a>
+                                    </li>
+                                    <li><a href="${pageContext.request.contextPath}/logout"
+                                           class="active">Logout</a></li>
                                 </ul>
 
                             </div>
                         </div>
-                        <div class="art-block clearfix">
-                            <div class="art-blockheader">
-                                <h3 class="t">Register a Doctor</h3>
-                            </div>
-                            <div class="art-blockcontent"><p style="text-align:center;"><img alt="" height="160"
-                                                                                             src="${pageContext.request.contextPath}/resources/images/shutterstock_15714391.jpg"
-                                                                                             width="120" class=""></p>
+                        <security:authorize access="hasAnyAuthority('ROLE_ADMIN')">
+                            <div class="art-block clearfix">
+                                <div class="art-blockheader">
+                                    <h3 class="t">Register a Doctor</h3>
+                                </div>
+                                <div class="art-blockcontent"><p style="text-align:center;"><img alt="" height="160"
+                                                                                                 src="${pageContext.request.contextPath}/resources/images/shutterstock_15714391.jpg"
+                                                                                                 width="120" class="">
+                                </p>
 
-                                <p style="text-align:center;"><br>
-                                    Phasellus elit dolor, porttitor id consec tetur sit ame.<br>
-                                    <br>
-                                    <a href="departments.html" class="art-button">Registration</a></p></div>
-                        </div>
+                                    <p style="text-align:center;"><br>
+                                        Phasellus elit dolor, porttitor id consec tetur sit ame.<br>
+                                        <br>
+                                        <a href="${pageContext.request.contextPath}/register-doctor-flow"
+                                           class="art-button">Registration</a></p></div>
+                            </div>
+                        </security:authorize>
                     </div>
                 </div>
             </div>

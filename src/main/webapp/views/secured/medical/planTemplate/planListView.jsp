@@ -24,12 +24,19 @@
         <p:editCell/>
 
     </p:table>
-    <p:button event="add" primary="true"
-              valueKey="Add"  />
-    <p:button event="plan" primary="true"
-              valueKey="plan" onclick="setSelectedRows('plan');"/>
+    <security:authorize access="hasAnyAuthority('ROLE_PLAN')">
+        <p:button event="add" primary="true"
+                  valueKey="Add"/>
+
+        <p:button event="plan" primary="true"
+                  valueKey="plan" onclick="setSelectedRows('plan');"/>
+
+    </security:authorize>
 </p:form>
 <script>
 
+    function setSelectedRow(rowIndex) {
+        $("#plan_selected_rows").val(rowIndex);
+    }
 </script>
 

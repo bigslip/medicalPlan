@@ -23,12 +23,13 @@ public class DefaultPersonService<T extends BaseModel> extends DefaultBasicServi
 
     @Transactional(rollbackFor = Exception.class)
     Person addPerson(Person person, User user) throws ServiceException {
-        List personList = daoService.createQuery("from Person p where p.nationalId=:nationalId")
-                .setParameter("nationalId", person.getNationalId()).getResultList();
 
-        if (personList != null && !personList.isEmpty()) {
-            throw new ServiceException("Someone already has that  nationalId ");
-        }
+//            List personList = daoService.createQuery("from Person p where p.nationalId=:nationalId")
+//                    .setParameter("nationalId", person.getNationalId()).getResultList();
+//
+//            if (personList != null && !personList.isEmpty()) {
+//                throw new ServiceException("Someone already has that  nationalId ");
+//            }
 
         person.setFixedName(CommonUtils.fixString(person.getFirstName() + person.getLastName()));
         return saveEntity(person, user);

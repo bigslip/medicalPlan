@@ -64,13 +64,13 @@
 
 </style>
 <nav class="art-nav">
-    <ul class="art-hmenu">
-        <li><a href="home.html" class="">Home</a></li>
-        <li><a href="departments.html" class="">Departments</a></li>
-        <li><a href="about-us.html" class="">About Us</a></li>
-        <li><a href="contact-us.html" class="">Contact Us</a></li>
-        <li><a href="reception.html" class="active">Reception</a></li>
-    </ul>
+    <%--<ul class="art-hmenu">--%>
+    <%--<li><a href="home.html" class="">Home</a></li>--%>
+    <%--<li><a href="departments.html" class="">Departments</a></li>--%>
+    <%--<li><a href="about-us.html" class="">About Us</a></li>--%>
+    <%--<li><a href="contact-us.html" class="">Contact Us</a></li>--%>
+    <%--<li><a href="reception.html" class="active">Reception</a></li>--%>
+    <%--</ul>--%>
 </nav>
 <header class="art-header">
 

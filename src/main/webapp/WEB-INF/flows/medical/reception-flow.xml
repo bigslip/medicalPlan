@@ -48,6 +48,7 @@
 
     <subflow-state id="planFlow" subflow="plan-flow">
         <input name="patientList" value="flowScope.patientAddedList"/>
+        <input name="visible" value="flowScope.visible"/>
         <transition on="finish" to="listAction"/>
     </subflow-state>
 

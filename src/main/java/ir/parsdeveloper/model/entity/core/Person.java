@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by bahram on 5/3/16.
  */
 @Entity
-@Table(name = "PERSON")
+@Table(name = "PERSON", uniqueConstraints = {@UniqueConstraint(name = "PERSON_NATIONAL_ID", columnNames = "NATIONAL_ID")})
 public class Person extends AuditModel<Long> {
     private String firstName;
     private String lastName;

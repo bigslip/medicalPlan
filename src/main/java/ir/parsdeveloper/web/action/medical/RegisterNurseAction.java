@@ -36,9 +36,7 @@ public class RegisterNurseAction extends AbstractFormAction<Nurse> {
             messageContext.addError(context, e);
             return error();
         }
-
-
-        return null;
+        return success();
     }
 
     @Override

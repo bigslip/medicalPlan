@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.Event;
 import org.springframework.webflow.execution.RequestContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,7 +68,14 @@ public class PlanAction extends AbstractFormAction<Plan> {
 
     @Override
     protected List<? extends Plan> prepareEntityList(RequestContext context, int currentPage, int pageSize) throws BaseException {
-        return daoService.find("select q from Plan q order by q.creationDate");
+        List<Plan> planList;
+
+        planList = daoService.find("select q from Plan q order by q.creationDate");
+
+        if (planList.isEmpty()) {
+            return new ArrayList<>();
+        }
+        return planList;
     }
 
     @Override

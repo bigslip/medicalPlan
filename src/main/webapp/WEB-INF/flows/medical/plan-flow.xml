@@ -8,6 +8,7 @@
     <!--    <secured match="any" attributes="ROLE_ADMIN"/>-->
 
     <input name="patientList" value="flowScope.patientList"/>
+    <input name="visible" value="flowScope.visible"/>
 
     <on-start>
         <set name="flowScope.formAction" value="planAction"/>

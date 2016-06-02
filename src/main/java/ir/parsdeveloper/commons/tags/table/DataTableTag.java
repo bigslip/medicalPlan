@@ -24,9 +24,9 @@ import java.util.List;
  */
 public class DataTableTag extends BodyTagSupport {
 
-    private static final String DEFAULT_DIR = "rtl";
+    private static final String DEFAULT_DIR = "ltr";
     private static final String DEFAULT_CSS_CLASS = " table table-bordered datatable dataTable ";
-    private static final String DEFAULT_CSS_STYLE = " direction: rtl;";
+    private static final String DEFAULT_CSS_STYLE = " direction: ltr;";
 
     private static Log logger = LogFactory.getLog(DataTableTag.class);
     protected Collection list;

@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class Doctor extends AuditModel<Long> {
 
     private Person person;
+    private User user;
 
 
     @Id
@@ -28,5 +29,15 @@ public class Doctor extends AuditModel<Long> {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    @ManyToOne()
+    @JoinColumn(name = "USER_ID")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
