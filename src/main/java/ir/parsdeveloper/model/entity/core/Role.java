@@ -47,6 +47,7 @@ public class Role extends AuditModel<Long> {
     private Set<Role> subRoles;
     private Integer version;
     private Set<User> users;
+    private Application application;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -142,5 +143,14 @@ public class Role extends AuditModel<Long> {
 
     public void setSubRoles(Set<Role> subRoles) {
         this.subRoles = subRoles;
+    }
+    @ManyToOne
+    @JoinColumn(name = "APPLICATION_ID", nullable = true)
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
     }
 }

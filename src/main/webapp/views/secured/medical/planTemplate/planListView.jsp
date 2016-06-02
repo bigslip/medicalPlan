@@ -24,14 +24,14 @@
         <p:editCell/>
 
     </p:table>
-    <security:authorize access="hasAnyAuthority('ROLE_PLAN')">
+    <%--<security:authorize access="hasAnyAuthority('ROLE_PLAN')">--%>
         <p:button event="add" primary="true"
                   valueKey="Add"/>
 
         <p:button event="plan" primary="true"
                   valueKey="plan" onclick="setSelectedRows('plan');"/>
 
-    </security:authorize>
+    <%--</security:authorize>--%>
 </p:form>
 <script>
 

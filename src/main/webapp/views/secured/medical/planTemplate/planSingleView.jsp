@@ -43,9 +43,9 @@
 
                 <p:textarea path="period.planTemplate.description" labelKey="description"/>
             </fieldset>
-            <security:authorize access="hasAnyAuthority('ROLE_PLAN')">
+            <%--<security:authorize access="hasAnyAuthority('ROLE_PLAN')">--%>
                 <p:button event="save" valueKey="save" cssClass="art-button"/>
-            </security:authorize>
+            <%--</security:authorize>--%>
             <p:button event="back" valueKey="back" cssClass="art-button"/>
         </div>
     </p:form>

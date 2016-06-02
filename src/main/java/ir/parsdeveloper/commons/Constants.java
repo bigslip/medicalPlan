@@ -65,6 +65,6 @@ public final class Constants implements Serializable {
 
     //------------------------Role-----------------------
     public static final Long ROLE_PLAN = 2L;
-    public static final Long RECEPTION_ROLE = 5L;
+    public static final Long RECEPTION_ROLE = 3L;
 
 }
