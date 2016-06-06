@@ -84,4 +84,14 @@ public class RegisterDoctorAction extends AbstractFormAction<Doctor> {
     public void setRegisterDoctorService(RegisterDoctorService registerDoctorService) {
         this.registerDoctorService = registerDoctorService;
     }
+
+    @Override
+    public Event onEdit(RequestContext context) throws ActionException {
+        Event event = super.onEdit(context);
+        Doctor doctor = getSelectedRowAsEntity(context);
+        Long oldNationalId=doctor.getPerson().getNationalId();
+        putInFlowScope(context,"oldNationalId",oldNationalId);
+
+        return event;
+    }
 }
