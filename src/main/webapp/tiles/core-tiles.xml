@@ -56,10 +56,10 @@
     </definition>
 
     <definition name="registerNurseListView" extends="defaultLayout">
-        <put-attribute name="content" value="/views/secured/medical/registerDoctor/registerDoctorListView.jsp"/>
+        <put-attribute name="content" value="/views/secured/medical/registerNurse/registerNurseListView.jsp"/>
     </definition>
     <definition name="registerNurseSingleView" extends="defaultLayout">
-        <put-attribute name="content" value="/views/secured/medical/registerDoctor/registerDoctorSingleView.jsp"/>
+        <put-attribute name="content" value="/views/secured/medical/registerNurse/registerNurseSingleView.jsp"/>
     </definition>
 
     <!--     ***Role***     -->
