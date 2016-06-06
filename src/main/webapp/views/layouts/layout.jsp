@@ -21,7 +21,7 @@
                 <div class="art-content-layout-row">
                     <div class="art-layout-cell art-content">
                         <article class="art-post art-article">
-                            <h2 class="art-postheader"><span class="art-postheadericon">Reception</span></h2>
+
 
                             <div class="art-postcontent art-postcontent-0 clearfix">
                                 <div class="art-content-layout-br layout-item-0">
