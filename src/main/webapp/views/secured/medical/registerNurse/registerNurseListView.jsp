@@ -6,7 +6,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/views/commons/tagLib.jsp" %>
-
+<h2 class="art-postheader"><span class="art-postheadericon">Nurses</span></h2>
 <p:form>
     <p:table>
         <p:column titleKey="firstName" property="person.firstName"/>
