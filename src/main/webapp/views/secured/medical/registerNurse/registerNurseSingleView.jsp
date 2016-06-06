@@ -18,6 +18,6 @@
     <p:form modelAttribute="nurse">
         <%@include file="/views/secured/medical/commons/personSingleView.jsp" %>
         <p:button event="save" valueKey="save" cssClass="art-button"/>
-        <p:button event="back" valueKey="back" cssClass="art-button"/>
+
     </p:form>
 </div>
