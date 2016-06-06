@@ -30,7 +30,7 @@ public class ObservBloodPressure extends Observation {
         this.systolic = systolic;
     }
 
-    @Column(name = "SYSTOLIC")
+    @Column(name = "DIASTOLIC")
     public Float getDiastolic() {
         return diastolic;
     }
