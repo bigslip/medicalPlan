@@ -8,7 +8,7 @@
 <%@include file="/views/commons/tagLib.jsp" %>
 
 <p:form modelAttribute="patient">
-
+    <h2 class="art-postheader"><span class="art-postheadericon">Reception</span></h2>
     <p:table list="${patientList}">
         <p:column titleKey="firstName" property="person.firstName"/>
         <p:column titleKey="lastName" property="person.lastName"/>
