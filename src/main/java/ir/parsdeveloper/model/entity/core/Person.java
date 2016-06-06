@@ -21,6 +21,7 @@ public class Person extends AuditModel<Long> {
     private Long nationalId;
     private String fixedName;
     private String email;
+    private String mobile;
     protected final static String SEQ_GENERATOR_NAME = "SQ_CB_PERSON";
 
 
@@ -110,5 +111,14 @@ public class Person extends AuditModel<Long> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Column(name = "MOBILE")
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }
