@@ -19,13 +19,13 @@ public class ObservBloodGlucose extends Observation {
 
 
     @Column(name = "BLOODGLUCOSE")
-    private Long bloodGlucose;
+    private Float bloodGlucose;
 
-    public Long getBloodGlucose() {
+    public Float getBloodGlucose() {
         return bloodGlucose;
     }
 
-    public void setBloodGlucose(Long bloodGlucose) {
+    public void setBloodGlucose(Float bloodGlucose) {
         this.bloodGlucose = bloodGlucose;
     }
 }

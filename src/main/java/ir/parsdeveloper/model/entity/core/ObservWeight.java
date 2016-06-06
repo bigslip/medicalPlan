@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "OBSERV_WEIGHT")
 @PrimaryKeyJoinColumn(name = "ID", referencedColumnName = "ID")
-public class ObservWeight   extends Observation {
+public class ObservWeight extends Observation {
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,14 @@ public class ObservWeight   extends Observation {
 //        return super.getId();
 //    }
 
-    private Long weight;
+    private Float weight;
+
     @Column(name = "WEIGHT")
-    public Long getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public void setWeight(Long weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
     }
 }
