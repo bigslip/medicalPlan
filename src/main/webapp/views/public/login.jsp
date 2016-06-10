@@ -1,118 +1,129 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hadi
-  Date: 8/11/13
-  Time: 10:17 AM
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@include file="/views/commons/tagLib.jsp" %>
-<!DOCTYPE html >
-<html class="no-js">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>login</title>
-    <meta charset="UTF-8"/>
 
     <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-    <%--<link href="${contextPath}/resources/styles/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"/>--%>
-    <%--<link href="${contextPath}/resources/styles/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"--%>
-          <%--media="screen"/>--%>
-    <%--<link href="${contextPath}/resources/styles/bootstrap/bootstrap-rtl.css" rel="stylesheet" media="screen"/>--%>
+    <!-- General meta information -->
+    <title>Login Form by Oussama Afellad</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="robots" content="index, follow"/>
+    <meta charset="utf-8"/>
+    <!-- // General meta information -->
 
 
-    <%--<link href="${contextPath}/resources/styles/core/base.css" rel="stylesheet" media="screen"/>--%>
+    <!-- Load Javascript -->
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/scripts/core/login/jquery.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/scripts/core/login/jquery.query-2.1.7.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/resources/scripts/core/login/rainbows.js"></script>
+    <!-- // Load Javascipt -->
 
-    <%--<script src="${contextPath}/resources/scripts/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>--%>
+    <!-- Load stylesheets -->
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/styles/_core/login/style.css" media="screen"/>
+    <!-- // Load stylesheets -->
 
-    <%--<script src="${contextPath}/resources/scripts/jquery/jquery-2.1.1.min.js"></script>--%>
-    <%--<script src="${contextPath}/resources/scripts/jquery/jquery-ui-1.10.4.custom.min.js"></script>--%>
+    <script>
 
-    <%--<script src="${contextPath}/resources/scripts/bootstrap/bootstrap.min.js"></script>--%>
-    <%--<script src="${contextPath}/resources/scripts/assets.js"></script>--%>
+
+        $(document).ready(function () {
+
+            $("#submit1").hover(
+                    function () {
+                        $(this).animate({"opacity": "0"}, "slow");
+                    },
+                    function () {
+                        $(this).animate({"opacity": "1"}, "slow");
+                    });
+        });
+
+
+    </script>
 
 </head>
 <body id="login">
-
-
 <spring:message code="application.login" var="application_login"/>
-<div id="login_container">
-
-    <div class="container">
-        <c:if test="${param.logout != null}">
-            You have been logged out.
-        </c:if>
-        <c:if test="${param.error!=null}">
-            <div id="fail" class="info_div" style="color: red;" dir="rtl">
+<c:if test="${param.logout != null}">
+    You have been logged out.
+</c:if>
+<c:if test="${param.error!=null}">
+    <div id="fail" class="info_div" style="color: red;" dir="rtl">
                     <span class="ico_cancel"
                           style="padding-right:20px ">
                         <spring:message code='errors.application.authentication_failure'/> <br/>
-                        <spring:message code='errors.application.user_and_password_incorrect'/>
+                        <spring:message code='Username or password is incorrect'/>
                     </span>
-            </div>
-        </c:if>
-        <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-            <span>${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
-        </c:if>
+    </div>
+</c:if>
+<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+    <span>${SPRING_SECURITY_LAST_EXCEPTION.message}</span>
+</c:if>
+<div id="wrapper">
+    <div id="wrappertop"></div>
 
-        <form class="form-signin" action="${pageContext.request.contextPath}/login" name="loginform" id="loginform" method="post" dir="rtl">
+    <div id="wrappermiddle">
+
+        <h2>Login</h2>
+        <form action="${pageContext.request.contextPath}/login" name="loginform" id="loginform" method="post">
             <security:csrfInput/>
-            <h2 class="form-signin-heading"><br/>
-            </h2>
-            <table>
-                <%--<tr>
-                    <td><label for="username"><spring:message code="user.username"/></label></td>
-                </tr>--%>
-                <tr>
-                    <td><input type="text" class="input-block-level"
-                               placeholder="<spring:message code="lbl.core.user.username"/>"
-                               name="username"
-                               value="admin"
-                               id="username" size="30"/></td>
-                </tr>
-                <%--<tr>
-                    <td><label for="password"><spring:message code="user.password"/> </label></td>
-                </tr>--%>
-                <tr>
+            <div id="username_input">
 
-                    <td>
-                        <input type="password" class="input-block-level" placeholder="password" name="password"
-                               value="123"
-                               id="password" size="30"/>
-                    </td>
-                </tr>
-                <tr>
-                    <%--<td></td>--%>
-                    <td>
-                        <label class="checkbox">
-                            <input id="remember" name="j_spring_security_remember_me" style="float: right"
-                                   type="checkbox"
-                                   value="true">
-                            <strong><label for="remember"> <span style="margin-right: 20px">
-                    <spring:message code="application.remember_me"/>  </span>
-                            </label>
-                            </strong>
+                <div id="username_inputleft"></div>
 
-                        </label>
-                    </td>
-                </tr>
-                <tr>
+                <div id="username_inputmiddle">
 
-                    <td>
-                        <button class="btn btn-large btn-primary" type="submit">${application_login}</button>
-                    </td>
-                </tr>
+                    <input type="text" name="username" id="url" value="Username" onclick="this.value = ''">
+                    <img id="url_user" src="${pageContext.request.contextPath}/resources/images/login/mailicon.png"
+                         alt="">
 
-            </table>
+                </div>
+
+                <div id="username_inputright"></div>
+
+            </div>
+
+            <div id="password_input">
+
+                <div id="password_inputleft"></div>
+
+                <div id="password_inputmiddle">
+
+                    <input type="password" name="password" id="url" value="Password" onclick="this.value = ''">
+                    <img id="url_password"
+                         src="${pageContext.request.contextPath}/resources/images/login/passicon.png"
+                         alt="">
+
+                </div>
+
+                <div id="password_inputright"></div>
+
+            </div>
+
+            <div id="submit">
+
+                <input type="image" src="${pageContext.request.contextPath}/resources/images/login/submit_hover.png"
+                       id="submit1" value="Sign In">
+                <input type="image" src="${pageContext.request.contextPath}/resources/images/login/submit.png"
+                       id="submit2" value="Sign In">
+
+            </div>
 
         </form>
 
+
+
+
     </div>
 
+    <div id="wrapperbottom"></div>
+
+
 </div>
+
 </body>
-<script type="text/javascript">
-    document.loginform.username.focus();
-    document.loginform.username.select();
-</script>
 </html>
