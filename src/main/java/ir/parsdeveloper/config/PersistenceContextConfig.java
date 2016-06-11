@@ -11,6 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -65,12 +68,20 @@ public class PersistenceContextConfig {
 
     @Bean()
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl(dataSourceUrl);
-        dataSource.setDriverClassName(dataSourceDriverClass);
-        dataSource.setUsername(dataSourceUsername);
-        dataSource.setPassword(dataSourcePassword);
-        return dataSource;
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setUrl(dataSourceUrl);
+//        dataSource.setDriverClassName(dataSourceDriverClass);
+//        dataSource.setUsername(dataSourceUsername);
+//        dataSource.setPassword(dataSourcePassword);
+//        return dataSource;
+
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        EmbeddedDatabase db = builder
+                .setType(EmbeddedDatabaseType.H2) //.H2 or .DERBY
+//                .addScript("db/sql/create-db.sql")
+//                .addScript("db/sql/insert-data.sql")
+                .build();
+        return db;
     }
 
     @Bean
@@ -106,6 +117,11 @@ public class PersistenceContextConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
         return properties;
+    }
+
+    @Bean
+    public JdbcTemplate getJdbcTemplate() {
+        return new JdbcTemplate(dataSource());
     }
    /* @Bean(name = "transactionManager")
     public JtaTransactionManager transactionManager() {
